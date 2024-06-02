@@ -8,22 +8,23 @@
 #ifndef INC_GPIO_PIN_HPP_
 #define INC_GPIO_PIN_HPP_
 
-#include <main.h>
+#include "stm32f4xx_hal.h"
 
 class Gpio_pin
 {
 public:
-	Gpio_pin(uint16_t pin, GPIO_TypeDef* port);   // Constructor
+	Gpio_pin();
+	Gpio_pin(uint16_t pin, GPIO_TypeDef& port);   // Constructor
 
     bool Read();
     void Set();
     void Clear();
     void Toggle();
-    void Init();
+    void Init(uint8_t speed);
 
 private:
-    uint16_t gpio_pin;
-    GPIO_TypeDef* gpio_port;
+    uint16_t gpio_pin{};
+    GPIO_TypeDef* gpio_port{};
 };
 
 
